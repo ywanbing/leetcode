@@ -38,20 +38,13 @@ func Intersect(nums1, nums2 []int) []int {
 	numMap := make(map[int]int)
 	arr := make([]int, 0)
 	for _, v := range nums1 {
-		if _, ok := numMap[v]; ok {
-			numMap[v]++
-		} else {
-			numMap[v] = 1
-		}
-
+		numMap[v]++
 	}
 
 	for _, v := range nums2 {
-		if n, ok := numMap[v]; ok {
-			if n > 0 {
-				arr = append(arr, v)
-				numMap[v]--
-			}
+		if numMap[v] > 0 {
+			arr = append(arr, v)
+			numMap[v]--
 		}
 	}
 
